@@ -36,6 +36,7 @@ defmodule Gotcha.MixProject do
       {:absinthe, "~> 1.4.0"},
       {:ecto_sql, "~> 3.1"},
       {:ex_machina, "~> 2.3", only: :test},
+      {:faker, "~> 0.12", only: :test},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:phoenix, "~> 1.4.9"},
