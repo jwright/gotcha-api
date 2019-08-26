@@ -1,36 +1,49 @@
 defmodule GotchaWeb.API.GraphQL.Requests.NearbyArenasTest do
   use GotchaWeb.ConnCase, async: true
 
+  import Gotcha.Factory
+  import GotchaWeb.GraphQLHelpers
+
   describe "with a valid query" do
     setup do
       query = """
-      query { arenas {
-        id
-        location_name
+      {
+        arenas {
+          location_name
+        }
       }
       """
 
-      conn = build_conn()
-      arena1 = insert(:arena)
-      arena2 = insert(:arena)
-      arena3 = insert(:arena)
+      conn = build_conn() |> put_graphql_headers
 
-      [conn: conn, query: query, arenas: [arena1, arena2, arena3]]
+      insert(:arena, location_name: "Wall Street")
+      insert(:arena, location_name: "One World Trade Center")
+      insert(:arena, location_name: "Eiffel Tower")
+
+      [conn: conn, query: query]
     end
 
-    test "returns the arenas within the default radius", %{conn: conn, query: query, arenas: arenas} do
+    test "returns the arenas within the default radius", %{
+      conn: conn,
+      query: query
+    } do
       conn = conn |> post("/graphql", query)
 
       assert json_response(conn, 200) == %{
-        "data" => {
-          "arenas" => [{
-            "id" => arenas[0].id,
-          }]
-        }
-      }
-    end
-
-    test "responds to the query with the fields" do
+               "data" => %{
+                 "arenas" => [
+                   %{
+                     "location_name" => "Wall Street"
+                   },
+                   %{
+                     "location_name" => "One World Trade Center"
+                   },
+                   %{
+                     "location_name" => "Eiffel Tower"
+                   }
+                 ]
+               }
+             }
     end
   end
 end
