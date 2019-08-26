@@ -44,4 +44,18 @@ defmodule Gotcha.Arena do
       if longitude > -181 && longitude < 181, do: [], else: [longitude: "is invalid"]
     end)
   end
+
+  def near(latitude, longitude, radius) do
+    radius_in_meters = Kernel.trunc(radius * 1609.34)
+    current_location = [latitude, longitude]
+
+    # TODO: This is not ideal as we are pulling down all of the locations. We don't
+    # want to complicate this with PostGIS yet
+
+    __MODULE__
+    |> Repo.all()
+    |> Enum.filter(fn arena ->
+      Geocalc.within?(radius_in_meters, current_location, [arena.latitude, arena.longitude])
+    end)
+  end
 end
