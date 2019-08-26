@@ -1,6 +1,8 @@
 defmodule Gotcha.ArenaTest do
   use ExUnit.Case, async: true
 
+  import Gotcha.Factory
+
   alias Gotcha.{Repo, Arena}
 
   setup do
@@ -9,6 +11,12 @@ defmodule Gotcha.ArenaTest do
   end
 
   describe "validations" do
+    test "valid arena is valid" do
+      changeset = Arena.build(params_for(:arena))
+
+      assert changeset.valid?
+    end
+
     test "location name is required" do
       changeset = Arena.build(%{location_name: ""})
 

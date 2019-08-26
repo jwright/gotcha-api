@@ -37,7 +37,11 @@ defmodule Gotcha.Arena do
       :latitude
     ])
     |> validate_length(:state, is: 2)
-    |> validate_inclusion(:latitude, -90..90)
-    |> validate_inclusion(:longitude, -180..180)
+    |> validate_change(:latitude, fn :latitude, latitude ->
+      if latitude > -91 && latitude < 91, do: [], else: [latitude: "is invalid"]
+    end)
+    |> validate_change(:longitude, fn :longitude, longitude ->
+      if longitude > -181 && longitude < 181, do: [], else: [longitude: "is invalid"]
+    end)
   end
 end
