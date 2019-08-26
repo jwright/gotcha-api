@@ -1,11 +1,12 @@
 defmodule GotchaWeb.Router do
   use GotchaWeb, :router
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
+  forward "/graphql", Absinthe.Plug, schema: GotchaWeb.GraphQL.Schema
 
-  scope "/api", GotchaWeb do
-    pipe_through :api
-  end
+  forward(
+    "/graphiql",
+    Absinthe.Plug.GraphiQL,
+    schema: GotchaWeb.GraphQL.Schema,
+    json_codec: Phoenix.json_library()
+  )
 end
