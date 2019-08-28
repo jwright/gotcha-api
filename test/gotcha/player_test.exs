@@ -63,5 +63,27 @@ defmodule Gotcha.PlayerTest do
                   constraint_name: "players_email_address_index"
                 ]}
     end
+
+    test "password is required" do
+      changeset = Player.build(%{password: ""})
+
+      refute changeset.valid?
+
+      assert changeset.errors[:password] ==
+               {"can't be blank", [validation: :required]}
+    end
+  end
+
+  describe ".create" do
+    test "hashes the password" do
+      {:ok, player} =
+        Player.create(%{
+          email_address: "jimmy@example.com",
+          name: "Jimmy Page",
+          password: "secret"
+        })
+
+      assert Bcrypt.verify_pass("secret", player.password_hash)
+    end
   end
 end

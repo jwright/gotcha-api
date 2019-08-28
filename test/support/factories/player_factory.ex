@@ -6,7 +6,8 @@ defmodule Gotcha.PlayerFactory do
       def player_factory do
         %Player{
           name: Faker.Name.name(),
-          email_address: Faker.Internet.email()
+          email_address: Faker.Internet.email(),
+          password: :crypto.strong_rand_bytes(10)
         }
       end
     end
