@@ -21,4 +21,36 @@ defmodule GotchaWeb.GraphQL.Schema do
       resolve(&Resolvers.Arenas.nearby/3)
     end
   end
+
+  @desc "All mutations that can be performed within Gotcha"
+  mutation do
+    @desc "Create an account"
+    field :register_player, type: :player do
+      arg(
+        :avatar,
+        :string,
+        description: "The base64 encoded avatar to create an account with"
+      )
+
+      arg(
+        :email_address,
+        non_null(:string),
+        description: "The email address to create an account with"
+      )
+
+      arg(
+        :name,
+        non_null(:string),
+        description: "The full name to create an account with"
+      )
+
+      arg(
+        :password,
+        non_null(:string),
+        description: "The password to create an account with"
+      )
+
+      resolve(&Resolvers.Players.register/3)
+    end
+  end
 end

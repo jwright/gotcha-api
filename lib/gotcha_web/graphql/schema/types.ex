@@ -30,4 +30,19 @@ defmodule GotchaWeb.GraphQL.Schema.Types do
     @desc "The longitude of the location for the arena."
     field(:longitude, non_null(:float))
   end
+
+  @desc "Represents a user that can play the game"
+  object :player do
+    @desc "The unique identifier for the player."
+    field(:id, non_null(:id))
+
+    @desc "The full name of the player."
+    field(:name, non_null(:string))
+
+    @desc "The email address of the player."
+    field(:email_address, non_null(:string))
+
+    @desc "The base 64 image avatar of the player."
+    field(:avatar, :string)
+  end
 end
