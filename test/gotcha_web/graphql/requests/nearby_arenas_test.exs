@@ -1,4 +1,4 @@
-defmodule GotchaWeb.API.GraphQL.Requests.NearbyArenasTest do
+defmodule GotchaWeb.GraphQL.Requests.NearbyArenasTest do
   use GotchaWeb.ConnCase, async: true
 
   import Gotcha.Factory

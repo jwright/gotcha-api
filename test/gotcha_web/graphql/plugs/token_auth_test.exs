@@ -1,4 +1,4 @@
-defmodule GotchaWeb.API.GraphQL.Plugs.TokenAuthTest do
+defmodule GotchaWeb.GraphQL.Plugs.TokenAuthTest do
   use GotchaWeb.ConnCase, async: true
 
   alias Joken.CurrentTime.Mock

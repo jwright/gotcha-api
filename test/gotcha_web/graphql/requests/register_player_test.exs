@@ -1,4 +1,4 @@
-defmodule GotchaWeb.API.GraphQL.Requests.RegisterPlayerTest do
+defmodule GotchaWeb.GraphQL.Requests.RegisterPlayerTest do
   use GotchaWeb.ConnCase, async: true
 
   import GotchaWeb.GraphQLHelpers

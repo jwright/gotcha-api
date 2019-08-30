@@ -1,4 +1,4 @@
-defmodule GotchaWeb.API.GraphQL.Requests.LoginTest do
+defmodule GotchaWeb.GraphQL.Requests.LoginTest do
   use GotchaWeb.ConnCase, async: true
 
   alias Gotcha.Player
