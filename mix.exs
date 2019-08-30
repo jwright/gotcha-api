@@ -41,6 +41,7 @@ defmodule Gotcha.MixProject do
       {:geocalc, "~> 0.5"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
+      {:joken, "~> 2.0"},
       {:phoenix, "~> 1.4.9"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
