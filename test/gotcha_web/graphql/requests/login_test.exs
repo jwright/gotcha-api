@@ -20,6 +20,7 @@ defmodule GotchaWeb.GraphQL.Requests.LoginTest do
         id
         email_address
         name
+        api_token
       }}
       """
 
@@ -35,15 +36,20 @@ defmodule GotchaWeb.GraphQL.Requests.LoginTest do
     } do
       conn = conn |> post("/graphql", query)
 
-      assert json_response(conn, 200) == %{
+      id = to_string(player.id)
+      email_address = player.email_address
+      name = player.name
+
+      assert %{
                "data" => %{
                  "login" => %{
-                   "id" => to_string(player.id),
-                   "email_address" => player.email_address,
-                   "name" => player.name
+                   "id" => ^id,
+                   "email_address" => ^email_address,
+                   "name" => ^name,
+                   "api_token" => _
                  }
                }
-             }
+             } = json_response(conn, 200)
     end
   end
 end

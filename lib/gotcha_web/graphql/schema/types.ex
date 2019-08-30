@@ -1,6 +1,8 @@
 defmodule GotchaWeb.GraphQL.Schema.Types do
   use Absinthe.Schema.Notation
 
+  alias GotchaWeb.GraphQL.Plugs.TokenAuth
+
   @desc "Represents a place where a game can take place"
   object :arena do
     @desc "The unique identifier for the arena."
@@ -44,5 +46,12 @@ defmodule GotchaWeb.GraphQL.Schema.Types do
 
     @desc "The base 64 image avatar of the player."
     field(:avatar, :string)
+
+    @desc "The api token for the current viewer."
+    field(:api_token, non_null(:string)) do
+      resolve(fn player, _, _ ->
+        {:ok, TokenAuth.generate_signed_jwt(player)}
+      end)
+    end
   end
 end
