@@ -24,8 +24,25 @@ defmodule GotchaWeb.GraphQL.Schema do
 
   @desc "All mutations that can be performed within Gotcha"
   mutation do
-    @desc "Create an account"
-    field :register_player, type: :player do
+    @desc "Authenticate a Player"
+    field :login, type: :viewer do
+      arg(
+        :email_address,
+        non_null(:string),
+        description: "The email address to login with"
+      )
+
+      arg(
+        :password,
+        non_null(:string),
+        description: "The password to login with"
+      )
+
+      resolve(&Resolvers.Auth.login/3)
+    end
+
+    @desc "Create a Player"
+    field :register_player, type: :viewer do
       arg(
         :avatar,
         :string,

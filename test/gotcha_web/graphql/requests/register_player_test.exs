@@ -1,4 +1,4 @@
-defmodule GotchaWeb.API.GraphQL.Requests.RegisterPlayerTest do
+defmodule GotchaWeb.GraphQL.Requests.RegisterPlayerTest do
   use GotchaWeb.ConnCase, async: true
 
   import GotchaWeb.GraphQLHelpers
@@ -13,6 +13,7 @@ defmodule GotchaWeb.API.GraphQL.Requests.RegisterPlayerTest do
                   password: \"test\") {
         email_address
         name
+        api_token
       }}
       """
 
@@ -35,14 +36,15 @@ defmodule GotchaWeb.API.GraphQL.Requests.RegisterPlayerTest do
     } do
       conn = conn |> post("/graphql", query)
 
-      assert json_response(conn, 200) == %{
+      assert %{
                "data" => %{
                  "registerPlayer" => %{
                    "name" => "Jimmy Page",
-                   "email_address" => "jimmyp@example.com"
+                   "email_address" => "jimmyp@example.com",
+                   "api_token" => _
                  }
                }
-             }
+             } = json_response(conn, 200)
     end
   end
 end
