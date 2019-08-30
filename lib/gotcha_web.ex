@@ -47,6 +47,7 @@ defmodule GotchaWeb do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+      import GotchaWeb.GraphQL.Plugs.TokenAuth, only: [get_current_player: 2]
     end
   end
 
