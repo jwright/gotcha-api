@@ -31,8 +31,8 @@ defmodule GotchaWeb.GraphQL.Schema.Types do
     field(:longitude, non_null(:float))
   end
 
-  @desc "Represents a user that can play the game"
-  object :player do
+  @desc "Represents the current user who is playing the game"
+  object :viewer do
     @desc "The unique identifier for the player."
     field(:id, non_null(:id))
 
