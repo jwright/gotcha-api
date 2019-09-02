@@ -1,5 +1,5 @@
 defmodule GotchaWeb.GraphQL.Resolvers.ArenaPlayers do
-  alias Gotcha.ArenaPlayer
+  alias Gotcha.{ArenaPlayer, MatchMaker}
 
   def play(_parent, %{arena_id: arena_id}, %{context: %{current_player: current_player}}) do
     arena_player =
@@ -7,6 +7,8 @@ defmodule GotchaWeb.GraphQL.Resolvers.ArenaPlayers do
         new_arena_player(arena_id, current_player.id)
 
     arena_player = Gotcha.Repo.preload(arena_player, [:arena, :player])
+
+    MatchMaker.match(arena_player.arena_id, arena_player.player_id)
 
     {:ok, arena_player}
   end

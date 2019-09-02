@@ -5,7 +5,7 @@ defmodule GotchaWeb.GraphQL.Requests.PlayArenaTest do
   import GotchaWeb.ConnCaseHelpers
   import GotchaWeb.GraphQLHelpers
 
-  alias Gotcha.{Repo, ArenaPlayer}
+  alias Gotcha.{ArenaPlayer, Match, Repo}
 
   describe "with a valid query" do
     setup do
@@ -69,6 +69,22 @@ defmodule GotchaWeb.GraphQL.Requests.PlayArenaTest do
                  }
                }
              } = json_response(conn, 200)
+    end
+
+    test "creates a new match between the player and someone else in the arena", %{
+      conn: conn,
+      query: query,
+      player: player,
+      arena: arena
+    } do
+      insert(:arena_player, arena: arena)
+
+      conn |> post("/graphql", query)
+
+      match = Match |> Ecto.Query.last() |> Repo.one()
+
+      assert arena.id == match.arena_id
+      assert player.id == match.player_id
     end
   end
 
