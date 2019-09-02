@@ -24,4 +24,12 @@ defmodule Gotcha.Match do
     |> where(arena_id: ^arena_id)
     |> Repo.all()
   end
+
+  def without(player_id) do
+    from(m in Match,
+      where: m.player_id != ^player_id and m.opponent_id != ^player_id,
+      select: m
+    )
+    |> Repo.all()
+  end
 end
