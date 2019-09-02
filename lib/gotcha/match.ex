@@ -1,7 +1,7 @@
 defmodule Gotcha.Match do
   use Gotcha.Query, module: __MODULE__
 
-  alias Gotcha.{Arena, Match, Player, Repo}
+  alias Gotcha.{Arena, Match, Player}
 
   schema "matches" do
     field :matched_at, :naive_datetime
@@ -19,17 +19,18 @@ defmodule Gotcha.Match do
     |> validate_required([:arena_id, :matched_at, :player_id, :opponent_id])
   end
 
-  def inside(arena_id) do
-    Match
-    |> where(arena_id: ^arena_id)
-    |> Repo.all()
+  def inside(query, arena_id) do
+    from m in query,
+      where: m.arena_id == ^arena_id
   end
 
-  def without(player_id) do
-    from(m in Match,
-      where: m.player_id != ^player_id and m.opponent_id != ^player_id,
-      select: m
-    )
-    |> Repo.all()
+  def with(query, player_id) do
+    from m in query,
+      where: m.player_id == ^player_id or m.opponent_id == ^player_id
+  end
+
+  def without(query, player_id) do
+    from m in query,
+      where: m.player_id != ^player_id and m.opponent_id != ^player_id
   end
 end
