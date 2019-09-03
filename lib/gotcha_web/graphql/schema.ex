@@ -20,6 +20,13 @@ defmodule GotchaWeb.GraphQL.Schema do
 
       resolve(&Resolvers.Arenas.nearby/3)
     end
+
+    @desc "Matches that are in the specified arena for the current player"
+    field :matches, list_of(:match) do
+      arg(:arena_id, non_null(:integer), description: "The id of the arena to find the matches in")
+
+      resolve(&Resolvers.Matches.inside/3)
+    end
   end
 
   @desc "All mutations that can be performed within Gotcha"

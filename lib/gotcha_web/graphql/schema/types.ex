@@ -1,6 +1,8 @@
 defmodule GotchaWeb.GraphQL.Schema.Types do
   use Absinthe.Schema.Notation
 
+  import_types(Absinthe.Type.Custom)
+
   alias GotchaWeb.GraphQL.Plugs.TokenAuth
 
   @desc "Represents a place where a game can take place"
@@ -43,6 +45,24 @@ defmodule GotchaWeb.GraphQL.Schema.Types do
 
     @desc "The player that is in the arena."
     field(:player, non_null(:player))
+  end
+
+  @desc "Represents a game between two players inside an arena"
+  object :match do
+    @desc "The unique identifier for the match."
+    field(:id, non_null(:id))
+
+    @desc "The date and time that the match was created."
+    field(:matched_at, non_null(:naive_datetime))
+
+    @desc "The place where the match is being played."
+    field(:arena, non_null(:arena))
+
+    @desc "The player that is in the match."
+    field(:player, non_null(:player))
+
+    @desc "The opponent against the player in the match."
+    field(:opponent, non_null(:player))
   end
 
   @desc "Represents a player who is playing the game"
