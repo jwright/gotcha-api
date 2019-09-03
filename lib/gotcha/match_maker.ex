@@ -1,5 +1,11 @@
 defmodule Gotcha.MatchMaker do
+  use Task, restart: :transient
+
   alias Gotcha.{Match, Opponent}
+
+  def start_link([arena_id, player_id]) do
+    Task.start_link(__MODULE__, :match, [arena_id, player_id])
+  end
 
   def match(arena_id, player_id) do
     case Opponent.find(arena_id, player_id) do
