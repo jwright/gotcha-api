@@ -41,6 +41,17 @@ defmodule GotchaWeb.GraphQL.Schema do
       resolve(&Resolvers.Auth.login/3)
     end
 
+    @desc "Puts a Player within an Arena"
+    field :play_arena, type: :arena_player do
+      arg(
+        :arena_id,
+        non_null(:integer),
+        description: "The id of the Arena to play in"
+      )
+
+      resolve(&Resolvers.ArenaPlayers.play/3)
+    end
+
     @desc "Create a Player"
     field :register_player, type: :viewer do
       arg(

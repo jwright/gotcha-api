@@ -33,8 +33,20 @@ defmodule GotchaWeb.GraphQL.Schema.Types do
     field(:longitude, non_null(:float))
   end
 
-  @desc "Represents the current user who is playing the game"
-  object :viewer do
+  @desc "Represents a place where a player is playing"
+  object :arena_player do
+    @desc "The unique identifier for the arena and player."
+    field(:id, non_null(:id))
+
+    @desc "The place where the player is playing."
+    field(:arena, non_null(:arena))
+
+    @desc "The player that is in the arena."
+    field(:player, non_null(:player))
+  end
+
+  @desc "Represents a player who is playing the game"
+  object :player do
     @desc "The unique identifier for the player."
     field(:id, non_null(:id))
 
@@ -46,6 +58,11 @@ defmodule GotchaWeb.GraphQL.Schema.Types do
 
     @desc "The base 64 image avatar of the player."
     field(:avatar, :string)
+  end
+
+  @desc "Represents the current user who is playing the game"
+  object :viewer do
+    import_fields(:player)
 
     @desc "The api token for the current viewer."
     field(:api_token, non_null(:string)) do

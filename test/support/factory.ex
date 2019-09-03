@@ -3,4 +3,6 @@ defmodule Gotcha.Factory do
 
   use Gotcha.ArenaFactory
   use Gotcha.PlayerFactory
+  use Gotcha.ArenaPlayerFactory
+  use Gotcha.MatchFactory
 end
