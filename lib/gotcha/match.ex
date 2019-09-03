@@ -1,7 +1,7 @@
 defmodule Gotcha.Match do
   use Gotcha.Query, module: __MODULE__
 
-  alias Gotcha.{Arena, Match, Player}
+  alias Gotcha.{Arena, Player}
 
   schema "matches" do
     field :matched_at, :naive_datetime
