@@ -60,8 +60,6 @@ To run all of the tests for this application, you can run the following within t
 mix test
 ```
 
-## DEPLOYING
-
 ## CONTRIBUTING
 
 1. Fork the repository `hub fork https://github.com/jwright/gotcha-api.git`
