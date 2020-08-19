@@ -36,7 +36,7 @@ defmodule GotchaWeb.GraphQL.Plugs.TokenAuth do
         {:ok, %{player: player}}
 
       {:error, error_message} ->
-        {:error, Keyword.get(error_message, :message)}
+        {:error, error_message}
     end
   end
 
