@@ -36,7 +36,7 @@ defmodule Gotcha.MixProject do
       {:absinthe_plug, "~> 1.5"},
       {:bcrypt_elixir, "~> 2.0"},
       {:ecto_sql, "~> 3.4"},
-      {:ex_machina, "~> 2.3", only: :test},
+      {:ex_machina, "~> 2.7", only: :test},
       {:faker, "~> 0.12", only: :test},
       {:geocalc, "~> 0.5"},
       {:gettext, "~> 0.11"},
