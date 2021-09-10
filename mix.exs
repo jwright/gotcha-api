@@ -33,7 +33,7 @@ defmodule Gotcha.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:absinthe_plug, "~> 1.4.0"},
+      {:absinthe_plug, "~> 1.5"},
       {:bcrypt_elixir, "~> 2.0"},
       {:ecto_sql, "~> 3.4"},
       {:ex_machina, "~> 2.3", only: :test},
