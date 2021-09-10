@@ -15,7 +15,7 @@ config :gotcha, GotchaWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "0TqZihHm9fomzyU5neLa60HyR6nBfLZp0ZRROI5IJjX912r36rupk94qqHNIdcLY",
   render_errors: [view: GotchaWeb.ErrorView, accepts: ~w(json)],
-  pubsub: [name: Gotcha.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: Gotcha.PubSub
 
 # Configures Elixir's Logger
 config :logger, :console,
