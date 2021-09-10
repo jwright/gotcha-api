@@ -18,7 +18,7 @@ brew install node
 brew install elixir
 brew install postgresql
 brew services start postgresql
-mix archive.install hex phx_new 1.4.9
+mix archive.install hex phx_new 1.5.12
 ```
 
 Then clone or fork this repo.
