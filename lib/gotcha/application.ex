@@ -10,6 +10,8 @@ defmodule Gotcha.Application do
     children = [
       # Start the Ecto repository
       Gotcha.Repo,
+      # Start the PubSub system
+      {Phoenix.PubSub, name: Gotcha.PubSub},
       # Start the endpoint when the application starts
       GotchaWeb.Endpoint
       # Starts a worker by calling: Gotcha.Worker.start_link(arg)

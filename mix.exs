@@ -42,10 +42,10 @@ defmodule Gotcha.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:joken, "~> 2.0"},
-      {:phoenix, "~> 1.4.9"},
-      {:phoenix_pubsub, "~> 1.1"},
+      {:phoenix, "~> 1.5.0"},
+      {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_ecto, "~> 4.0"},
-      {:plug_cowboy, "~> 2.0"},
+      {:plug_cowboy, "~> 2.1"},
       {:postgrex, ">= 0.0.0"}
     ]
   end
