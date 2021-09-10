@@ -67,4 +67,4 @@ mix test
 1. Codez!
 1. Commit your changes (small commits please)
 1. Push your new branch `git push origin my-awesome-feature`
-1. Create a merge request `hub pull-request -b jwright:master -h <your-account>:my-awesome-feature`
+1. Create a merge request `hub pull-request -b jwright:main -h <your-account>:my-awesome-feature`
