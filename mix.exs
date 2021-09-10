@@ -35,16 +35,16 @@ defmodule Gotcha.MixProject do
     [
       {:absinthe_plug, "~> 1.4.0"},
       {:bcrypt_elixir, "~> 2.0"},
-      {:ecto_sql, "~> 3.1"},
+      {:ecto_sql, "~> 3.4"},
       {:ex_machina, "~> 2.3", only: :test},
       {:faker, "~> 0.12", only: :test},
       {:geocalc, "~> 0.5"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:joken, "~> 2.0"},
-      {:phoenix, "~> 1.5.0"},
+      {:phoenix, "~> 1.5.12"},
       {:phoenix_pubsub, "~> 2.0"},
-      {:phoenix_ecto, "~> 4.0"},
+      {:phoenix_ecto, "~> 4.4"},
       {:plug_cowboy, "~> 2.1"},
       {:postgrex, ">= 0.0.0"}
     ]
