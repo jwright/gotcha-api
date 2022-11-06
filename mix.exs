@@ -5,7 +5,7 @@ defmodule Gotcha.MixProject do
     [
       app: :gotcha,
       version: "0.1.0",
-      elixir: "~> 1.11",
+      elixir: "~> 1.14.1",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -41,9 +41,9 @@ defmodule Gotcha.MixProject do
       {:geocalc, "~> 0.5"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:joken, "~> 2.0"},
-      {:phoenix, "~> 1.5.12"},
-      {:phoenix_pubsub, "~> 2.0"},
+      {:joken, "~> 2.5"},
+      {:phoenix, "~> 1.6.9"},
+      {:phoenix_pubsub, "~> 2.1"},
       {:phoenix_ecto, "~> 4.4"},
       {:plug_cowboy, "~> 2.1"},
       {:postgrex, ">= 0.0.0"}
